@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#F8E9AA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/MyMainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minWidth="25px"
+            android:minHeight="25px">
+            <RelativeLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RemoveMe"
+                android:layout_marginBottom="57.5dp"
+                android:background="#F0E68C">
+                <TextView
+                    android:text="Sonic"
+                    android:layout_alignParentLeft="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/Mittente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ff000000" />
+                <TextView
+                    android:text="In giro per Lot"
+                    android:textColor="#ff000000"
+                    android:layout_alignParentRight="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Luogo"
+                    android:textStyle="italic" />
+                <TextView
+                    android:text="Testo della missiva"
+                    android:textColor="#ff000000"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Mittente"
+                    android:id="@+id/MyText"
+                    android:textStyle="bold" />
+                <Button
+                    android:text="Rispondi"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="200px"
+                    android:layout_height="70px"
+                    android:layout_below="@id/MyText"
+                    android:id="@+id/Rispondi"
+                    android:padding="0dp" />
+                <TextView
+                    android:text="14.05"
+                    android:textColor="#ff000000"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/MyText"
+                    android:id="@+id/Luogo"
+                    android:layout_marginTop="5dp" />
+                <Button
+                    android:text="Cancella"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="200px"
+                    android:layout_height="70px"
+                    android:padding="0dp"
+                    android:layout_below="@id/MyText"
+                    android:id="@+id/Cancella" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/MyMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <Button
+            android:text="Scrivi a.."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/Compose" />
+        <Button
+            android:text="Esci da Lot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/Logout" />
+    </LinearLayout>
+</LinearLayout>
