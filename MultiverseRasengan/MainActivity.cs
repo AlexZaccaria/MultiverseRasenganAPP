@@ -130,7 +130,7 @@ namespace MultiverseRasengan
 
 				Button BMail = FindViewById<Button>(Resource.Id.Mail);
 				BMail.Click += delegate 
-				{ ThreadPool.QueueUserWorkItem(o => Logout()); };
+				{ ThreadPool.QueueUserWorkItem(o => CheckMail()); };
 
 				Button BGC = FindViewById<Button>(Resource.Id.GlobalChat);
 				BGC.Click += delegate 
@@ -180,7 +180,7 @@ namespace MultiverseRasengan
 
 				Button BLogout = FindViewById<Button>(Resource.Id.Back);
 				BLogout.Click += delegate 
-				{ ThreadPool.QueueUserWorkItem(o => CheckMail()); };
+				{ ThreadPool.QueueUserWorkItem(o => Logout()); };
 
 				Button BCompose = FindViewById<Button>(Resource.Id.Compose);
 				BCompose.Click += delegate 
