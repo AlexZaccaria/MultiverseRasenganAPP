@@ -111,7 +111,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/Welcome2" />
+                android:src="@drawable/Welcome" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

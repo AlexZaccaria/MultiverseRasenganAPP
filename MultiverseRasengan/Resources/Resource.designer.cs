@@ -805,7 +805,7 @@ namespace MultiverseRasengan
 			public const int Stargate = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int Welcome2 = 2130837593;
+			public const int Welcome = 2130837593;
 			
 			static Drawable()
 			{
