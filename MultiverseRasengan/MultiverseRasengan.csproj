@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -37,6 +38,9 @@
     <ConsolePause>false</ConsolePause>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <AotAssemblies>true</AotAssemblies>
+    <EnableLLVM>true</EnableLLVM>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -76,9 +80,13 @@
     <AndroidResource Include="Resources\layout\ComposeMail.axml" />
     <AndroidResource Include="Resources\layout\Loading.axml" />
     <AndroidResource Include="Resources\layout\Mail.axml" />
-    <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\layout\ReplyMail.axml" />
     <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\layout\Login.axml" />
+    <AndroidResource Include="Resources\layout\Menu.axml" />
+    <AndroidResource Include="Resources\drawable\Stargate.png" />
+    <AndroidResource Include="Resources\drawable\LotButton.xml" />
+    <AndroidResource Include="Resources\drawable\Welcome.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

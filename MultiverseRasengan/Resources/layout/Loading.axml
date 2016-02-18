@@ -9,15 +9,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ProgressBar xmlns:tools="http://schemas.android.com/tools"
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/MyBar" />
+            android:orientation="horizontal"
+            android:background="@drawable/Stargate"
+            android:layout_width="350dp"
+            android:layout_height="350dp">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ProgressBar xmlns:tools="http://schemas.android.com/tools"
+                        style="?android:attr/progressBarStyleLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/MyBar"
+                        android:minWidth="200dp"
+                        android:minHeight=" 200dp" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"

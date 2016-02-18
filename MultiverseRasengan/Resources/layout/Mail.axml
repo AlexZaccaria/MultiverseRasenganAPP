@@ -60,7 +60,11 @@
                     android:layout_height="70px"
                     android:layout_below="@id/MyText"
                     android:id="@+id/Rispondi"
-                    android:padding="0dp" />
+                    android:padding="0dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp"
+                    android:background="@drawable/LotButton"
+                    android:layout_margin="5dp" />
                 <TextView
                     android:text="14.05"
                     android:textColor="#ff000000"
@@ -78,7 +82,11 @@
                     android:layout_height="70px"
                     android:padding="0dp"
                     android:layout_below="@id/MyText"
-                    android:id="@+id/Cancella" />
+                    android:id="@+id/Cancella"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15dp"
+                    android:background="@drawable/LotButton"
+                    android:layout_margin="5dp" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
@@ -94,12 +102,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/Compose" />
+            android:id="@+id/Compose"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:background="@drawable/LotButton"
+            android:layout_margin="5dp" />
         <Button
-            android:text="Esci da Lot"
+            android:text="Esci"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/Logout" />
+            android:id="@+id/Back"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp"
+            android:background="@drawable/LotButton"
+            android:layout_margin="5dp" />
     </LinearLayout>
 </LinearLayout>

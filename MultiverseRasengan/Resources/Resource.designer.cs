@@ -798,6 +798,15 @@ namespace MultiverseRasengan
 			// aapt resource value: 0x7f020056
 			public const int abc_textfield_searchview_right_holo_light = 2130837590;
 			
+			// aapt resource value: 0x7f020057
+			public const int LotButton = 2130837591;
+			
+			// aapt resource value: 0x7f020058
+			public const int Stargate = 2130837592;
+			
+			// aapt resource value: 0x7f020059
+			public const int Welcome2 = 2130837593;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -812,34 +821,43 @@ namespace MultiverseRasengan
 		{
 			
 			// aapt resource value: 0x7f0a0047
-			public const int Cancella = 2131361863;
-			
-			// aapt resource value: 0x7f0a0048
-			public const int Compose = 2131361864;
+			public const int BLogin = 2131361863;
 			
 			// aapt resource value: 0x7f0a004f
-			public const int Login = 2131361871;
+			public const int Back = 2131361871;
 			
-			// aapt resource value: 0x7f0a0049
-			public const int Logout = 2131361865;
+			// aapt resource value: 0x7f0a004d
+			public const int Cancella = 2131361869;
 			
-			// aapt resource value: 0x7f0a0045
-			public const int Luogo = 2131361861;
+			// aapt resource value: 0x7f0a004e
+			public const int Compose = 2131361870;
 			
 			// aapt resource value: 0x7f0a0052
-			public const int MailDelete = 2131361874;
+			public const int Exit = 2131361874;
+			
+			// aapt resource value: 0x7f0a0051
+			public const int GlobalChat = 2131361873;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int Luogo = 2131361867;
+			
+			// aapt resource value: 0x7f0a0050
+			public const int Mail = 2131361872;
+			
+			// aapt resource value: 0x7f0a0055
+			public const int MailDelete = 2131361877;
 			
 			// aapt resource value: 0x7f0a003f
 			public const int MailList = 2131361855;
 			
+			// aapt resource value: 0x7f0a0057
+			public const int MailNext = 2131361879;
+			
+			// aapt resource value: 0x7f0a0056
+			public const int MailPrev = 2131361878;
+			
 			// aapt resource value: 0x7f0a0054
-			public const int MailNext = 2131361876;
-			
-			// aapt resource value: 0x7f0a0053
-			public const int MailPrev = 2131361875;
-			
-			// aapt resource value: 0x7f0a0051
-			public const int MailReply = 2131361873;
+			public const int MailReply = 2131361876;
 			
 			// aapt resource value: 0x7f0a003e
 			public const int MailSend = 2131361854;
@@ -847,17 +865,17 @@ namespace MultiverseRasengan
 			// aapt resource value: 0x7f0a003d
 			public const int MailText = 2131361853;
 			
-			// aapt resource value: 0x7f0a0044
-			public const int Mittente = 2131361860;
+			// aapt resource value: 0x7f0a004a
+			public const int Mittente = 2131361866;
 			
 			// aapt resource value: 0x7f0a0040
 			public const int MyBar = 2131361856;
 			
-			// aapt resource value: 0x7f0a004a
-			public const int MyMSG = 2131361866;
-			
 			// aapt resource value: 0x7f0a0042
-			public const int MyMainLayout = 2131361858;
+			public const int MyMSG = 2131361858;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int MyMainLayout = 2131361864;
 			
 			// aapt resource value: 0x7f0a0041
 			public const int MyText = 2131361857;
@@ -865,11 +883,11 @@ namespace MultiverseRasengan
 			// aapt resource value: 0x7f0a003c
 			public const int Nickname = 2131361852;
 			
-			// aapt resource value: 0x7f0a0043
-			public const int RemoveMe = 2131361859;
+			// aapt resource value: 0x7f0a0049
+			public const int RemoveMe = 2131361865;
 			
-			// aapt resource value: 0x7f0a0046
-			public const int Rispondi = 2131361862;
+			// aapt resource value: 0x7f0a004c
+			public const int Rispondi = 2131361868;
 			
 			// aapt resource value: 0x7f0a001c
 			public const int action_bar = 2131361820;
@@ -976,11 +994,11 @@ namespace MultiverseRasengan
 			// aapt resource value: 0x7f0a0007
 			public const int normal = 2131361799;
 			
-			// aapt resource value: 0x7f0a004d
-			public const int pass = 2131361869;
+			// aapt resource value: 0x7f0a0045
+			public const int pass = 2131361861;
 			
-			// aapt resource value: 0x7f0a004e
-			public const int passentry = 2131361870;
+			// aapt resource value: 0x7f0a0046
+			public const int passentry = 2131361862;
 			
 			// aapt resource value: 0x7f0a0004
 			public const int progress_circular = 2131361796;
@@ -991,8 +1009,8 @@ namespace MultiverseRasengan
 			// aapt resource value: 0x7f0a002f
 			public const int radio = 2131361839;
 			
-			// aapt resource value: 0x7f0a0050
-			public const int scrollView1 = 2131361872;
+			// aapt resource value: 0x7f0a0053
+			public const int scrollView1 = 2131361875;
 			
 			// aapt resource value: 0x7f0a0032
 			public const int search_badge = 2131361842;
@@ -1057,11 +1075,11 @@ namespace MultiverseRasengan
 			// aapt resource value: 0x7f0a000e
 			public const int useLogo = 2131361806;
 			
-			// aapt resource value: 0x7f0a004b
-			public const int user = 2131361867;
+			// aapt resource value: 0x7f0a0043
+			public const int user = 2131361859;
 			
-			// aapt resource value: 0x7f0a004c
-			public const int userentry = 2131361868;
+			// aapt resource value: 0x7f0a0044
+			public const int userentry = 2131361860;
 			
 			// aapt resource value: 0x7f0a0013
 			public const int withText = 2131361811;
@@ -1174,16 +1192,19 @@ namespace MultiverseRasengan
 			public const int Loading = 2130968601;
 			
 			// aapt resource value: 0x7f04001a
-			public const int Mail = 2130968602;
+			public const int Login = 2130968602;
 			
 			// aapt resource value: 0x7f04001b
-			public const int Main = 2130968603;
+			public const int Mail = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int ReplyMail = 2130968604;
+			public const int Menu = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int support_simple_spinner_dropdown_item = 2130968605;
+			public const int ReplyMail = 2130968605;
+			
+			// aapt resource value: 0x7f04001e
+			public const int support_simple_spinner_dropdown_item = 2130968606;
 			
 			static Layout()
 			{

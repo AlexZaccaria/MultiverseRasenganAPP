@@ -22,97 +22,45 @@ namespace MultiverseRasengan
 	{
 		System.Timers.Timer MyTimer = new System.Timers.Timer();
 		CookieContainer MyCookies = new CookieContainer();
-		bool Refresh = false;
+		string Refresh = null;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
-			SetContentView(Resource.Layout.Main);
+			SetContentView(Resource.Layout.Login);
 
 			MyTimer.Elapsed += new System.Timers.ElapsedEventHandler(Refresher);
 			MyTimer.Interval = 60000;
 
-			Button MyButt = FindViewById<Button>(Resource.Id.Login);
+			Button MyButt = FindViewById<Button>(Resource.Id.BLogin);
 			MyButt.Click += delegate 
 			{ ThreadPool.QueueUserWorkItem(o => Login(FindViewById<TextView>(Resource.Id.userentry).Text, FindViewById<TextView>(Resource.Id.passentry).Text)); };
 		}
 
 		protected override void OnPause()
 		{
-			base.OnPause();
 			ThreadPool.QueueUserWorkItem(o => Logout());
 			MyTimer.Stop();
+			base.OnPause();
 		}
 
 		protected override void OnStop()
 		{
-			base.OnStop();
 			ThreadPool.QueueUserWorkItem(o => Logout());
 			MyTimer.Stop();
+			base.OnStop();
 		}
 
 		protected override void OnDestroy()
 		{
-			base.OnDestroy();
 			ThreadPool.QueueUserWorkItem(o => Logout());
 			MyTimer.Stop();
-		}
-
-		private void Login(string Nick, string Pass)
-		{
-			if (Nick == "" || Pass == "") 
-			{
-				PostLogout ("Errore: riempi tutti i campi!");
-				return;
-			}
-			else
-				Loading("Sto entrando a Lot..");
-
-			try
-			{				
-				string url = "http://extremelot.leonardo.it/proc/login_nuovo.asp";
-				HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
-				request.CookieContainer = MyCookies;
-
-				// Set the Method property of the request to POST.
-				request.Method = "POST";
-				// Create POST data and convert it to a byte array.
-				string postData = "id="+Nick+"&pass="+Pass;
-				byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-				// Set the ContentType property of the WebRequest.
-				request.ContentType = "application/x-www-form-urlencoded";
-				// Set the ContentLength property of the WebRequest.
-				request.ContentLength = byteArray.Length;
-				// Get the request stream.
-				Stream dataStream = request.GetRequestStream();
-				// Write the data to the request stream.
-				dataStream.Write(byteArray, 0, byteArray.Length);
-				// Close the Stream object.
-				dataStream.Close();
-
-				HttpWebResponse myResp = (HttpWebResponse) request.GetResponse();
-				StreamReader reader = new StreamReader(myResp.GetResponseStream());
-				string responseText = reader.ReadToEnd();
-
-				if (responseText.IndexOf ("Bentornat") != -1) 
-				{
-					MyTimer.Start();
-					ThreadPool.QueueUserWorkItem(o => CheckMail());
-				}
-				else if (responseText.IndexOf("sessione") != -1)
-					PostLogout("Login fallito: giá collegato!");
-				else if (responseText.IndexOf("corrispondono") != -1)
-					PostLogout("Login fallito: dati errati!");
-				else
-					PostLogout(responseText);
-			}
-			catch (System.Exception EX) 
-			{ PostLogout ("Errore: Sei collegato a Internet ?"); }
+			base.OnDestroy();
 		}
 
 		private void Refresher(object ignoreme, System.Timers.ElapsedEventArgs ignoremetoo)
 		{
-			if (Refresh)
+			if (Refresh == null)
 				ThreadPool.QueueUserWorkItem (o => CheckMail());
 			else 
 			{
@@ -121,6 +69,77 @@ namespace MultiverseRasengan
 				request.CookieContainer = MyCookies;
 				request.GetResponse().Close();
 			}
+		}
+
+		private void Login(string Nick, string Pass)
+		{
+			Loading("Sto entrando a Lot..");
+
+			if (Nick == "" || Pass == "") 
+				PostLogout ("Errore: riempi tutti i campi!");
+			else
+				try
+				{				
+					string url = "http://extremelot.leonardo.it/proc/login_nuovo.asp";
+					HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
+					request.CookieContainer = MyCookies;
+
+					// Set the Method property of the request to POST.
+					request.Method = "POST";
+					// Create POST data and convert it to a byte array.
+					string postData = "id="+Nick+"&pass="+Pass;
+					byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+					// Set the ContentType property of the WebRequest.
+					request.ContentType = "application/x-www-form-urlencoded";
+					// Set the ContentLength property of the WebRequest.
+					request.ContentLength = byteArray.Length;
+					// Get the request stream.
+					Stream dataStream = request.GetRequestStream();
+					// Write the data to the request stream.
+					dataStream.Write(byteArray, 0, byteArray.Length);
+					// Close the Stream object.
+					dataStream.Close();
+
+					HttpWebResponse myResp = (HttpWebResponse) request.GetResponse();
+					StreamReader reader = new StreamReader(myResp.GetResponseStream());
+					string responseText = reader.ReadToEnd();
+
+					if (responseText.IndexOf ("Bentornat") != -1) 
+					{
+						MyTimer.Start();
+						ThreadPool.QueueUserWorkItem(o => CheckMail());
+					}
+					else if (responseText.IndexOf("sessione") != -1)
+						PostLogout("Login fallito: giá collegato!");
+					else if (responseText.IndexOf("corrispondono") != -1)
+						PostLogout("Login fallito: dati errati!");
+					else
+						PostLogout(responseText);
+				}
+				catch (System.Exception) 
+				{ PostLogout ("Errore: Sei collegato a Internet ?"); }
+		}
+
+		private void Menu()
+		{
+			Loading("");
+
+			RunOnUiThread (() =>
+			{ 
+				SetContentView(Resource.Layout.Menu);
+
+				Button BMail = FindViewById<Button>(Resource.Id.Mail);
+				BMail.Click += delegate 
+				{ ThreadPool.QueueUserWorkItem(o => Logout()); };
+
+				Button BGC = FindViewById<Button>(Resource.Id.GlobalChat);
+				BGC.Click += delegate 
+				{  };
+
+				Button BExit = FindViewById<Button>(Resource.Id.Exit);
+				BExit.Click += delegate 
+				{ ThreadPool.QueueUserWorkItem(o => Logout()); };
+			});
 		}
 
 		private void CheckMail()
@@ -149,7 +168,8 @@ namespace MultiverseRasengan
 
 		private void RenderMail(Array TRs)
 		{
-			Refresh = true;
+			Loading("");
+			Refresh = "Mail";
 
 			RunOnUiThread (() =>
 			{ 
@@ -158,9 +178,9 @@ namespace MultiverseRasengan
 				RelativeLayout RemoveMe = FindViewById<RelativeLayout>(Resource.Id.RemoveMe);
 				Main.RemoveView(RemoveMe);
 
-				Button BLogout = FindViewById<Button>(Resource.Id.Logout);
+				Button BLogout = FindViewById<Button>(Resource.Id.Back);
 				BLogout.Click += delegate 
-				{ ThreadPool.QueueUserWorkItem(o => Logout()); };
+				{ ThreadPool.QueueUserWorkItem(o => CheckMail()); };
 
 				Button BCompose = FindViewById<Button>(Resource.Id.Compose);
 				BCompose.Click += delegate 
@@ -238,7 +258,9 @@ namespace MultiverseRasengan
 					{ Text = "Leggi" };
 					Leggi.Id = 6904;
 					Leggi.LayoutParameters = MyPars;
-					Leggi.SetPadding(0, 0, 0, 5);
+					Leggi.SetBackgroundResource(Resource.Drawable.LotButton);
+					Leggi.SetTextColor(Color.White);
+					Leggi.SetTextSize(Android.Util.ComplexUnitType.Dip, 15);
 					Leggi.Click += delegate 
 					{ ThreadPool.QueueUserWorkItem(o => ReadMail(ID)); };
 					NewLayout.AddView(Leggi);
@@ -258,10 +280,12 @@ namespace MultiverseRasengan
 					MyPars.AddRule(LayoutRules.AlignParentRight);
 					MyPars.AddRule(LayoutRules.Below, 6903);
 					Button Cancella = new Button(this)
-					{ Text = "Cancella" };
+					{ Text = "Elimina" };
 					Cancella.Id = 6906;
 					Cancella.LayoutParameters = MyPars;
-					Cancella.SetPadding(0, 0, 0, 5);
+					Cancella.SetBackgroundResource(Resource.Drawable.LotButton);
+					Cancella.SetTextColor(Color.White);
+					Cancella.SetTextSize(Android.Util.ComplexUnitType.Dip, 15);
 					Cancella.Click += delegate 
 					{ ThreadPool.QueueUserWorkItem(o => DeleteMail(ID)); };
 					NewLayout.AddView(Cancella);
@@ -314,7 +338,7 @@ namespace MultiverseRasengan
 				Testo = Regex.Split(MixTesti.InnerHtml, "<p>")[0];
 				Vecchio = MixTesti.Descendants("i").First().InnerHtml;
 			}
-			catch (System.Exception EX) 
+			catch (System.Exception) 
 			{
 				Testo = MixTesti.InnerHtml;
 				Vecchio = "";
@@ -343,6 +367,8 @@ namespace MultiverseRasengan
 
 		private void ReplyMail(string ID, string Prev, string Next, string Mittente, string Data, string Testo, string Vecchio)
 		{
+			Loading("");
+
 			string NewLine = JavaSystem.GetProperty ("line.separator");
 			string Bar = "===========================";
 
@@ -485,7 +511,7 @@ namespace MultiverseRasengan
 
 		private void Loading(string MSG)
 		{
-			Refresh = false;
+			Refresh = null;
 
 			RunOnUiThread (() =>
 			{ 
@@ -500,10 +526,10 @@ namespace MultiverseRasengan
 
 			RunOnUiThread (() =>
 			{ 
-				SetContentView(Resource.Layout.Main);
+				SetContentView(Resource.Layout.Login);
 				FindViewById<TextView>(Resource.Id.MyMSG).Text = MSG;
 
-				Button MyButt = FindViewById<Button>(Resource.Id.Login);
+				Button MyButt = FindViewById<Button>(Resource.Id.BLogin);
 				MyButt.Click += delegate 
 				{ ThreadPool.QueueUserWorkItem(o => Login(FindViewById<TextView>(Resource.Id.userentry).Text, FindViewById<TextView>(Resource.Id.passentry).Text)); };
 			});
